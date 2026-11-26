@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Доступ ограничен — TrackSpot{% endblock %}
+{% block content %}
+<div class="panel panel--narrow notice">
+    <div class="notice__icon">🔒</div>
+    <h2>Доступ ограничен</h2>
+    <p>Загружать треки могут только пользователи со статусом <b>Исполнитель</b>.</p>
+    <p class="muted">Вы можете сменить свой статус в личном кабинете.</p>
+    <div class="btn-row">
+        <a href="{% url 'profile' %}" class="btn">Перейти в личный кабинет</a>
+        <a href="{% url 'home' %}" class="btn btn--secondary">На главную</a>
+    </div>
+</div>
+{% endblock %}

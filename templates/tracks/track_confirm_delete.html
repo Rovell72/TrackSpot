@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Удаление трека — TrackSpot{% endblock %}
+{% block content %}
+<div class="panel panel--narrow notice">
+    <div class="notice__icon notice__icon--danger">🗑</div>
+    <h2>Удаление трека</h2>
+    <p>Вы точно хотите удалить трек <b>«{{ track.title }}»</b>?<br>
+       <span class="muted">Это действие нельзя отменить.</span></p>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="btn-row">
+            <button type="submit" class="btn btn--danger">Да, удалить</button>
+            <a href="{% url 'home' %}" class="btn btn--secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

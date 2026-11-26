@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Личный кабинет — TrackSpot{% endblock %}
+{% block content %}
+<div class="panel panel--medium">
+    <h2 class="panel__title">Личный кабинет</h2>
+    <div class="profile">
+        <aside class="profile__side">
+            {% if user.profile.avatar %}
+                <img class="profile__avatar" src="{{ user.profile.avatar.url }}" alt="Аватар">
+            {% else %}
+                <div class="profile__avatar">{{ user.username|slice:":1"|upper }}</div>
+            {% endif %}
+            <h3 class="profile__name">{{ user.username }}</h3>
+            <span class="badge{% if user.profile.role == 'artist' %} badge--artist{% endif %}">{{ user.profile.get_role_display }}</span>
+        </aside>
+
+        <section>
+            <h3>Редактировать данные</h3>
+            <form method="POST" enctype="multipart/form-data" class="form" novalidate>
+                {% csrf_token %}
+                {% if u_form.errors or p_form.errors %}
+                    <div class="alert alert--error">Не удалось сохранить: исправьте ошибки ниже.</div>
+                {% endif %}
+                {% include 'includes/form_fields.html' with form=u_form %}
+                {% include 'includes/form_fields.html' with form=p_form %}
+                <button type="submit" class="btn">Сохранить изменения</button>
+            </form>
+        </section>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Лента треков — TrackSpot{% endblock %}
+{% block content %}
+    <div class="page-head">
+        <h2>Лента треков</h2>
+        <span class="muted">{{ tracks|length }} шт.</span>
+    </div>
+
+    <div class="track-list">
+        {% for track in tracks %}
+            {% include 'includes/track_card.html' %}
+        {% empty %}
+            <div class="empty">
+                <div class="empty__icon">♫</div>
+                <h3>Пока нет ни одного трека</h3>
+                <p class="muted">Будьте первым!</p>
+                {% if user.is_authenticated %}
+                    <a class="btn" href="{% url 'upload_track' %}">Загрузить трек</a>
+                {% else %}
+                    <a class="btn" href="{% url 'register' %}">Создать аккаунт</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Вход — TrackSpot{% endblock %}
+{% block content %}
+<div class="panel panel--narrow">
+    <h2 class="panel__title">Вход на сайт</h2>
+    <form method="POST" class="form" novalidate>
+        {% csrf_token %}
+        {% include 'includes/form_fields.html' %}
+        <button type="submit" class="btn btn--block">Войти</button>
+        <div class="form__footer">
+            <a href="{% url 'password_reset' %}">Забыли пароль?</a>
+            <span>Нет аккаунта? <a href="{% url 'register' %}">Регистрация</a></span>
+        </div>
+    </form>
+</div>
+{% endblock %}

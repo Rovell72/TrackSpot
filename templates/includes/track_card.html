@@ -1,0 +1,26 @@
+<article class="track-card">
+    {% if track.cover %}
+        <img class="track-card__cover" src="{{ track.cover.url }}" alt="Обложка «{{ track.title }}»">
+    {% else %}
+        <div class="track-card__cover">♫</div>
+    {% endif %}
+    <div class="track-card__body">
+        <span class="track-card__author">{{ track.author.username }}</span>
+        <h3 class="track-card__title">{{ track.title }}</h3>
+        {% if track.description %}<p class="track-card__desc">{{ track.description }}</p>{% endif %}
+        <div class="track-card__player">
+            <audio controls preload="none">
+                <source src="{{ track.audio_file.url }}">
+            </audio>
+        </div>
+        <div class="track-card__footer">
+            <span>{{ track.created_at|date:"d.m.Y" }}</span>
+            {% if user == track.author %}
+                <span class="track-card__actions">
+                    <a class="btn btn--secondary btn--small" href="{% url 'edit_track' track.pk %}">Редактировать</a>
+                    <a class="btn btn--danger btn--small" href="{% url 'delete_track' track.pk %}">Удалить</a>
+                </span>
+            {% endif %}
+        </div>
+    </div>
+</article>
