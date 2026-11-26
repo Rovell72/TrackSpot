@@ -129,6 +129,19 @@ MAILERS = {
     },
 }
 
+# Все загружаемые файлы (аватарки, обложки, аудио) хранятся в db.sqlite3,
+# в таблице core_storedfile (см. core/storage.py).
+STORAGES = {
+    'default': {
+        'BACKEND': 'core.storage.DatabaseStorage',
+    },
+    'staticfiles': {
+        'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
+    },
+}
+
+# MEDIA_URL — адрес, по которому файлы отдаются из БД (см. config/urls.py).
+# MEDIA_ROOT нужен только команде import_media_to_db для переноса старых файлов.
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 

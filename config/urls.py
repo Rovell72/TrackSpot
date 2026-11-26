@@ -14,10 +14,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import re
+
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, re_path, include
 from django.conf import settings
-from django.conf.urls.static import static
+
+from core.views import media_file
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +29,7 @@ urlpatterns = [
     path('tracks/', include('tracks.urls')),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Файлы (аватарки, обложки, аудио) отдаются из базы данных, а не из папки media/
+urlpatterns += [
+    re_path(r'^%s(?P<name>.+)$' % re.escape(settings.MEDIA_URL.lstrip('/')), media_file, name='media_file'),
+]
