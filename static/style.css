@@ -1,4 +1,4 @@
-/* ===== TrackSpot — стили в духе SoundCloud ===== */
+/*TrackSpot*/
 :root {
     --orange: #f50;
     --orange-dark: #e64a00;
@@ -37,7 +37,7 @@ h2 { font-size: 24px; }
 h3 { font-size: 16px; }
 hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
 
-/* ===== Шапка ===== */
+/*Шапка*/
 .site-header {
     background: var(--dark-2);
     color: #fff;
@@ -106,7 +106,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
     color: #fff; font-size: 12px; font-weight: 700;
 }
 
-/* ===== Каркас страницы ===== */
+/*Каркас страницы*/
 .page {
     flex: 1 0 auto;
     width: 100%;
@@ -130,7 +130,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
 .muted { color: var(--muted); }
 .lead { font-size: 15px; }
 
-/* ===== Кнопки ===== */
+/*Кнопки*/
 .btn {
     display: inline-flex;
     align-items: center;
@@ -157,7 +157,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
 .btn--block { width: 100%; }
 .btn-row { display: flex; gap: 10px; align-items: center; margin-top: 20px; }
 
-/* ===== Формы ===== */
+/*Формы*/
 .form { margin: 0; }
 .form__row { margin-bottom: 18px; }
 .form__label {
@@ -218,7 +218,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
 .form__help { margin-top: 6px; font-size: 12px; color: var(--muted); }
 .form__help ul { margin: 0; padding-left: 18px; }
 
-/* Ошибки валидации */
+/*Ошибки валидации*/
 .form__row--error input[type="text"],
 .form__row--error input[type="email"],
 .form__row--error input[type="password"],
@@ -258,7 +258,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
     flex-wrap: wrap;
 }
 
-/* ===== Лента треков ===== */
+/*Лента треков*/
 .page-head {
     display: flex;
     align-items: baseline;
@@ -314,7 +314,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
 }
 .empty__icon { font-size: 42px; color: var(--orange); }
 
-/* ===== Профиль ===== */
+/*Профиль*/
 .profile { display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: start; }
 .profile__side { text-align: center; }
 .profile__avatar {
@@ -340,7 +340,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
 }
 .badge--artist { background: var(--orange); color: #fff; }
 
-/* ===== Страницы-сообщения (удаление, доступ ограничен) ===== */
+/*Страницы-сообщения (удаление, доступ ограничен)*/
 .notice { text-align: center; }
 .notice__icon {
     width: 64px; height: 64px;
@@ -354,7 +354,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
 .notice__icon--danger { background: var(--danger-bg); color: var(--danger); }
 .notice .btn-row { justify-content: center; }
 
-/* ===== Футер ===== */
+/*Футер*/
 .site-footer {
     flex-shrink: 0;
     background: var(--dark);
@@ -375,7 +375,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
 .site-footer a:hover { color: #fff; }
 .site-footer b { color: var(--orange); }
 
-/* ===== Адаптив ===== */
+/*Адаптив*/
 @media (max-width: 640px) {
     .nav__link { padding: 0 8px; font-size: 12px; }
     .nav__text { display: none; }
@@ -385,6 +385,6 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
     .panel { padding: 16px; }
 }
 
-/* ===== Сообщения (messages framework) ===== */
+/*Сообщения (messages framework)*/
 .messages { max-width: 720px; margin: 0 auto 8px; }
 .alert--success { background: #eef7ee; border-color: #b9dcba; color: var(--ok); }
