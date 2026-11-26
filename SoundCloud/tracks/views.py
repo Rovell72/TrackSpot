@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
+from django.contrib import messages
 from .models import Track
 from .forms import TrackForm
 
@@ -15,10 +16,11 @@ def upload_track(request):
             track = form.save(commit=False)
             track.author = request.user
             track.save()
+            messages.success(request, 'Трек загружен!')
             return redirect('home')
     else:
         form = TrackForm()
-    
+
     return render(request, 'tracks/track_form.html', {'form': form, 'title': 'Загрузить трек'})
 
 @login_required
@@ -31,6 +33,7 @@ def edit_track(request, pk):
         form = TrackForm(request.POST, request.FILES, instance=track)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Трек обновлён.')
             return redirect('home')
     else:
         form = TrackForm(instance=track)
@@ -45,6 +48,7 @@ def delete_track(request, pk):
 
     if request.method == 'POST':
         track.delete()
+        messages.success(request, 'Трек удалён.')
         return redirect('home')
 
     return render(request, 'tracks/track_confirm_delete.html', {'track': track})
